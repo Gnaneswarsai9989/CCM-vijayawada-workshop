@@ -233,7 +233,19 @@
       max-width: 250px;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.7));
+      filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.7)) brightness(1.15) contrast(1.1);
+    }
+
+    .nav-logo-fallback {
+      font-family: var(--font-main);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .nav-logo-fallback span {
+      color: #22d3ee;
     }
 
     /* Live workshop indicator badge */
@@ -2254,7 +2266,8 @@
   <nav class="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo" title="Creator Craft Media">
-        <img src="logo.png" alt="Creator Craft Media">
+        <img src="logo.png" alt="Creator Craft Media" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="nav-logo-fallback" style="display:none;">CREATOR <span>CRAFT</span> MEDIA</div>
       </a>
 
       <!-- Live Workshop Status Badge -->
@@ -2443,7 +2456,7 @@
             <li><span class="curr-list-check">&#x2713;</span><span>Gimbal Handling &amp; Stabilization</span></li>
             <li><span class="curr-list-check">&#x2713;</span><span>Indoor &amp; Outdoor Lighting Setup</span></li>
             <li><span class="curr-list-check">&#x2713;</span><span>Instant Cinematic Shooting Live Demo</span></li>
-            <li><span class="curr-list-check">&#x2713;</span><span>Fast Mobile-First Editing Techniques</span></li>
+            <li><span class="curr-list-check">&#x2713;</span><span>Fast Mobile-First Editing Techniques (CapCut Masterclass)</span></li>
             <li><span class="curr-list-check">&#x2713;</span><span>Real-Time Cinematic Product Shoot Experience</span>
             </li>
           </ul>
@@ -2459,7 +2472,7 @@
           <ul class="curr-list">
             <li><span class="curr-list-check">&#x2713;</span><span>AI Filmmaking Foundations &amp; Workflows</span></li>
             <li><span class="curr-list-check">&#x2713;</span><span>AI Avatar Generation &amp; Lip Sync</span></li>
-            <li><span class="curr-list-check">&#x2713;</span><span>AI Video Generation &amp; Motion Control</span></li>
+            <li><span class="curr-list-check">&#x2713;</span><span>AI Video Generation &amp; Motion Control (Google Flow, Higgsfield, Seedance, Kling)</span></li>
             <li><span class="curr-list-check">&#x2713;</span><span>AI Voice Over &amp; Audio Synthesis</span></li>
             <li><span class="curr-list-check">&#x2713;</span><span>AI-Powered Content Pipelines</span></li>
             <li><span class="curr-list-check">&#x2713;</span><span>META Ads Campaign Setup &amp; Scaling</span></li>
@@ -2483,11 +2496,11 @@
         <div class="topic-pill"><span class="topic-dot"></span><span class="topic-text">Instant Cinematic
             Shooting</span></div>
         <div class="topic-pill"><span class="topic-dot"></span><span class="topic-text">Instant Editing
-            Techniques</span></div>
+            Techniques (CapCut)</span></div>
         <div class="topic-pill"><span class="topic-dot"></span><span class="topic-text">AI Filmmaking</span></div>
         <div class="topic-pill"><span class="topic-dot"></span><span class="topic-text">AI Avatar Generation</span>
         </div>
-        <div class="topic-pill"><span class="topic-dot"></span><span class="topic-text">AI Video Generation</span></div>
+        <div class="topic-pill"><span class="topic-dot"></span><span class="topic-text">AI Video Generation (Google Flow, Higgsfield, Seedance, Kling)</span></div>
         <div class="topic-pill"><span class="topic-dot"></span><span class="topic-text">AI Voice Over</span></div>
         <div class="topic-pill"><span class="topic-dot"></span><span class="topic-text">AI-powered Content
             Creation</span></div>
@@ -2785,7 +2798,7 @@
           return;
         }
 
-        var headers = ["Timestamp", "Registration ID", "Full Name", "Mobile", "Email", "T-Shirt", "Category", "Knowledge Level", "Location", "Freelance Interest", "UTR ID", "Receipt Filename"];
+        var headers = ["Timestamp", "Registration ID", "Full Name", "Mobile", "Email", "T-Shirt", "Category", "Knowledge Level", "Location", "Freelance Interest", "UTR ID", "Workshop Pass (PDF)", "Receipt Filename"];
         var csvRows = [headers.join(",")];
 
         list.forEach(function (item) {
@@ -2801,6 +2814,7 @@
             '"' + (item.location || '') + '"',
             '"' + (item.freelance || '') + '"',
             '"' + (item.utr || '') + '"',
+            '"' + (item.pdfFilename || (item.regId ? item.regId + '_Workshop_Pass.pdf' : 'Pass Available')) + '"',
             '"' + (item.receiptFilename || '') + '"'
           ];
           csvRows.push(row.join(","));
