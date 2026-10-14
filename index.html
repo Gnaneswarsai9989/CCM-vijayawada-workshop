@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creator Craft Media â€” Cinematic Shoot &amp; AI Film-Making Workshop | Vijayawada</title>
+  <title>Creator Craft Media &mdash; Cinematic Shoot &amp; AI Film-Making Workshop | Vijayawada</title>
   <meta name="description"
-    content="A 2-day practical, hands-on workshop in Vijayawada on Oct 24â€“25. Day 1: Cinematic Shoot &amp; Pro Level Editing. Day 2: AI Film Making &amp; META Ads. Register now!">
+    content="A 2-day practical, hands-on workshop in Vijayawada on Oct 24 &amp; 25. Day 1: Cinematic Shoot &amp; Pro Level Editing. Day 2: AI Film Making &amp; META Ads. Register now!">
 
   <!-- Google Fonts: Outfit (Display) & Plus Jakarta Sans (Body) & JetBrains Mono (Codes) & Poppins (CTA) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1860,24 +1860,31 @@
     }
 
     .popup-close {
-      width: 28px;
-      height: 28px;
+      position: relative;
+      z-index: 10;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       color: var(--text-muted);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
+      font-size: 14px;
+      line-height: 1;
+      padding: 0;
       transition: all 0.2s;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .popup-close:hover {
-      background: rgba(239, 68, 68, 0.25);
-      border-color: rgba(239, 68, 68, 0.4);
+      background: rgba(239, 68, 68, 0.35);
+      border-color: rgba(239, 68, 68, 0.6);
       color: #fff;
+      transform: scale(1.08);
     }
 
     .popup-title {
@@ -2105,7 +2112,7 @@
     }
 
     /* ==========================================================================
-       DAY HIGHLIGHTS â€” BIG BOLD CARDS
+       DAY HIGHLIGHTS — BIG BOLD CARDS
        ========================================================================== */
     .day-highlights {
       display: grid;
@@ -2206,7 +2213,7 @@
     }
 
     /* ==========================================================================
-       CITY GALLERY â€” VIJAYAWADA IMAGES
+       CITY GALLERY — VIJAYAWADA IMAGES
        ========================================================================== */
     .city-gallery {
       display: grid;
@@ -2462,8 +2469,15 @@
     }
 
     @keyframes tPlayPulse {
-      0%   { transform: scale(1);   opacity: 0.8; }
-      100% { transform: scale(1.5); opacity: 0; }
+      0% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: scale(1.5);
+        opacity: 0;
+      }
     }
 
     .t-play-btn svg {
@@ -2572,6 +2586,7 @@
         flex: 0 0 230px;
         max-height: 410px;
       }
+
       .t-play-btn {
         width: 52px;
         height: 52px;
@@ -2584,11 +2599,13 @@
 
     .sticky-reg-bar {
       position: fixed;
-      bottom: 0; left: 0; right: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       z-index: 1100;
       /* Slide in once on load */
-      animation: srbSlideIn 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
-      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.35s ease;
+      animation: srbSlideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
     }
 
     .sticky-reg-bar.srb-hidden {
@@ -2598,11 +2615,18 @@
     }
 
     @keyframes srbSlideIn {
-      from { transform: translateY(100%); opacity: 0; }
-      to   { transform: translateY(0);   opacity: 1; }
+      from {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
-    /* Inner tray â€” frosted glass strip */
+    /* Inner tray — frosted glass strip */
     .srb-tray {
       display: flex;
       align-items: center;
@@ -2619,15 +2643,15 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to top, rgba(0,0,2,0.97) 0%, rgba(4,4,14,0.94) 100%);
+        linear-gradient(to top, rgba(0, 0, 2, 0.97) 0%, rgba(4, 4, 14, 0.94) 100%);
       backdrop-filter: blur(20px) saturate(160%);
       -webkit-backdrop-filter: blur(20px) saturate(160%);
-      border-top: 1px solid rgba(99,102,241,0.22);
+      border-top: 1px solid rgba(99, 102, 241, 0.22);
       /* Subtle top accent glow */
       box-shadow:
-        0 -1px 0 rgba(99,102,241,0.18),
-        0 -12px 40px rgba(0,0,0,0.75),
-        inset 0 1px 0 rgba(255,255,255,0.04);
+        0 -1px 0 rgba(99, 102, 241, 0.18),
+        0 -12px 40px rgba(0, 0, 0, 0.75),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
       z-index: -1;
     }
 
@@ -2696,10 +2720,11 @@
 
     /* Live blinking dot */
     .srb-live-dot {
-      width: 6px; height: 6px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: #10B981;
-      box-shadow: 0 0 7px #10B981, 0 0 14px rgba(16,185,129,0.5);
+      box-shadow: 0 0 7px #10B981, 0 0 14px rgba(16, 185, 129, 0.5);
       display: inline-block;
       animation: srbLivePulse 1.8s ease-in-out infinite;
       flex-shrink: 0;
@@ -2708,8 +2733,17 @@
     }
 
     @keyframes srbLivePulse {
-      0%,100% { opacity:1; transform:scale(1); }
-      50%      { opacity:0.35; transform:scale(0.7); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.35;
+        transform: scale(0.7);
+      }
     }
 
     /* Seats highlight */
@@ -2722,7 +2756,7 @@
     .srb-divider {
       width: 1px;
       height: 40px;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       flex-shrink: 0;
     }
 
@@ -2750,11 +2784,11 @@
       background: linear-gradient(135deg, #1e40af 0%, #312e81 55%, #1d4ed8 100%);
       /* Clean neon border ring */
       box-shadow:
-        0 0 0 1.5px rgba(99,102,241,0.7),
-        0 0 16px 3px rgba(99,102,241,0.5),
-        0 0 36px 6px rgba(139,92,246,0.28),
-        inset 0 1px 0 rgba(255,255,255,0.18),
-        inset 0 -1px 0 rgba(0,0,0,0.25);
+        0 0 0 1.5px rgba(99, 102, 241, 0.7),
+        0 0 16px 3px rgba(99, 102, 241, 0.5),
+        0 0 36px 6px rgba(139, 92, 246, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.25);
       animation: srbGlow 2.8s ease-in-out infinite;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       overflow: hidden;
@@ -2762,20 +2796,18 @@
       outline: none;
     }
 
-    /* Rotating conic border â€” subtle, professional */
+    /* Rotating conic border — subtle, professional */
     .sticky-reg-btn::before {
       content: "";
       position: absolute;
       inset: -1.5px;
       border-radius: 100px;
-      background: conic-gradient(
-        from var(--srb-angle, 0deg),
-        #6366f1 0deg,
-        #8b5cf6 90deg,
-        #3b82f6 180deg,
-        #6366f1 270deg,
-        #8b5cf6 360deg
-      );
+      background: conic-gradient(from var(--srb-angle, 0deg),
+          #6366f1 0deg,
+          #8b5cf6 90deg,
+          #3b82f6 180deg,
+          #6366f1 270deg,
+          #8b5cf6 360deg);
       z-index: -1;
       animation: srbSpin 4s linear infinite;
     }
@@ -2787,75 +2819,95 @@
     }
 
     @keyframes srbSpin {
-      to { --srb-angle: 360deg; }
+      to {
+        --srb-angle: 360deg;
+      }
     }
 
-    /* Shimmer sweep â€” single, elegant */
+    /* Shimmer sweep — single, elegant */
     .sticky-reg-btn::after {
       content: "";
       position: absolute;
-      top: 0; left: -100%;
+      top: 0;
+      left: -100%;
       width: 60%;
       height: 100%;
       background: linear-gradient(100deg,
-        transparent 20%,
-        rgba(255,255,255,0.15) 50%,
-        transparent 80%
-      );
+          transparent 20%,
+          rgba(255, 255, 255, 0.15) 50%,
+          transparent 80%);
       animation: srbShimmer 4s ease-in-out infinite 1s;
       pointer-events: none;
       border-radius: 100px;
     }
 
     @keyframes srbShimmer {
-      0%,60% { left: -100%; }
-      75%     { left: 130%; }
-      100%    { left: 130%; }
+
+      0%,
+      60% {
+        left: -100%;
+      }
+
+      75% {
+        left: 130%;
+      }
+
+      100% {
+        left: 130%;
+      }
     }
 
     @keyframes srbGlow {
-      0%,100% {
+
+      0%,
+      100% {
         box-shadow:
-          0 0 0 1.5px rgba(99,102,241,0.7),
-          0 0 16px 3px rgba(99,102,241,0.5),
-          0 0 36px 6px rgba(139,92,246,0.28),
-          inset 0 1px 0 rgba(255,255,255,0.18),
-          inset 0 -1px 0 rgba(0,0,0,0.25);
+          0 0 0 1.5px rgba(99, 102, 241, 0.7),
+          0 0 16px 3px rgba(99, 102, 241, 0.5),
+          0 0 36px 6px rgba(139, 92, 246, 0.28),
+          inset 0 1px 0 rgba(255, 255, 255, 0.18),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.25);
       }
+
       50% {
         box-shadow:
-          0 0 0 1.5px rgba(139,92,246,0.9),
-          0 0 24px 6px rgba(99,102,241,0.75),
-          0 0 50px 12px rgba(139,92,246,0.40),
-          inset 0 1px 0 rgba(255,255,255,0.22),
-          inset 0 -1px 0 rgba(0,0,0,0.2);
+          0 0 0 1.5px rgba(139, 92, 246, 0.9),
+          0 0 24px 6px rgba(99, 102, 241, 0.75),
+          0 0 50px 12px rgba(139, 92, 246, 0.40),
+          inset 0 1px 0 rgba(255, 255, 255, 0.22),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.2);
       }
     }
 
     .sticky-reg-btn:hover {
       transform: translateY(-2px);
       box-shadow:
-        0 0 0 2px rgba(139,92,246,1),
-        0 0 28px 8px rgba(99,102,241,0.80),
-        0 0 56px 14px rgba(139,92,246,0.45),
-        inset 0 1px 0 rgba(255,255,255,0.25),
-        inset 0 -1px 0 rgba(0,0,0,0.15);
+        0 0 0 2px rgba(139, 92, 246, 1),
+        0 0 28px 8px rgba(99, 102, 241, 0.80),
+        0 0 56px 14px rgba(139, 92, 246, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.15);
     }
 
-    .sticky-reg-btn:active { transform: scale(0.975); }
+    .sticky-reg-btn:active {
+      transform: scale(0.975);
+    }
 
     /* Ripple */
     .srb-ripple {
       position: absolute;
       border-radius: 50%;
-      background: rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.2);
       transform: scale(0);
       animation: srbRippleAnim 0.55s linear;
       pointer-events: none;
     }
 
     @keyframes srbRippleAnim {
-      to { transform: scale(4); opacity: 0; }
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
     }
 
     /* ---- Button inner content ---- */
@@ -2872,7 +2924,8 @@
     /* Chevron sparkle (like reference image triangles) */
     .srb-chev {
       display: block;
-      width: 0; height: 0;
+      width: 0;
+      height: 0;
       border-style: solid;
       animation: srbChevPulse 1.8s ease-in-out infinite;
     }
@@ -2881,23 +2934,43 @@
     .srb-sparkles--left .srb-chev {
       border-width: 4px 6px 4px 0;
       border-color: transparent #F59E0B transparent transparent;
-      filter: drop-shadow(0 0 4px rgba(245,158,11,0.8));
+      filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.8));
     }
 
     /* Right-pointing chevrons */
     .srb-sparkles--right .srb-chev {
       border-width: 4px 0 4px 6px;
       border-color: transparent transparent transparent #F59E0B;
-      filter: drop-shadow(0 0 4px rgba(245,158,11,0.8));
+      filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.8));
     }
 
-    .srb-sparkles .srb-chev:nth-child(1) { animation-delay: 0s;    opacity: 0.9; }
-    .srb-sparkles .srb-chev:nth-child(2) { animation-delay: 0.15s; opacity: 0.65; transform: scaleX(0.75); }
-    .srb-sparkles .srb-chev:nth-child(3) { animation-delay: 0.30s; opacity: 0.40; transform: scaleX(0.5);  }
+    .srb-sparkles .srb-chev:nth-child(1) {
+      animation-delay: 0s;
+      opacity: 0.9;
+    }
+
+    .srb-sparkles .srb-chev:nth-child(2) {
+      animation-delay: 0.15s;
+      opacity: 0.65;
+      transform: scaleX(0.75);
+    }
+
+    .srb-sparkles .srb-chev:nth-child(3) {
+      animation-delay: 0.30s;
+      opacity: 0.40;
+      transform: scaleX(0.5);
+    }
 
     @keyframes srbChevPulse {
-      0%,100% { opacity: inherit; }
-      50%      { opacity: 0.15; }
+
+      0%,
+      100% {
+        opacity: inherit;
+      }
+
+      50% {
+        opacity: 0.15;
+      }
     }
 
     /* ---- Button Label (Poppins) ---- */
@@ -2909,8 +2982,8 @@
       color: #fff;
       white-space: nowrap;
       text-shadow:
-        0 0 10px rgba(200,210,255,0.6),
-        0 1px 3px rgba(0,0,0,0.5);
+        0 0 10px rgba(200, 210, 255, 0.6),
+        0 1px 3px rgba(0, 0, 0, 0.5);
       position: relative;
       z-index: 1;
     }
@@ -2921,17 +2994,18 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 28px; height: 28px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       flex-shrink: 0;
       transition: transform 0.2s ease, background 0.2s ease;
     }
 
     .sticky-reg-btn:hover .srb-arrow-badge {
       transform: translateX(3px);
-      background: rgba(255,255,255,0.22);
+      background: rgba(255, 255, 255, 0.22);
     }
 
     /* ---- Responsive ---- */
@@ -2940,12 +3014,32 @@
         padding: 12px 18px 18px;
         gap: 14px;
       }
-      .srb-divider { display: none; }
-      .srb-price-current { font-size: 22px; }
-      .srb-price-original { font-size: 13px; }
-      .srb-price-sub { font-size: 11px; }
-      .sticky-reg-btn { height: 48px; padding: 0 24px; }
-      .srb-label { font-size: 0.95rem; letter-spacing: 0.05em; }
+
+      .srb-divider {
+        display: none;
+      }
+
+      .srb-price-current {
+        font-size: 22px;
+      }
+
+      .srb-price-original {
+        font-size: 13px;
+      }
+
+      .srb-price-sub {
+        font-size: 11px;
+      }
+
+      .sticky-reg-btn {
+        height: 48px;
+        padding: 0 24px;
+      }
+
+      .srb-label {
+        font-size: 0.95rem;
+        letter-spacing: 0.05em;
+      }
     }
 
     @media (max-width: 480px) {
@@ -2955,37 +3049,539 @@
         gap: 10px;
         padding: 10px 14px 18px;
       }
+
       .srb-price-side {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
       }
-      .srb-price-sub { display: none; }
+
+      .srb-price-sub {
+        display: none;
+      }
+
       .sticky-reg-btn {
         width: 100%;
         height: 50px;
         justify-content: center;
       }
-      .srb-sparkles { display: none; }
+
+      .srb-sparkles {
+        display: none;
+      }
     }
+
+      /* ==========================================================================
+       WHATSAPP FLOATING BUTTON & CHAT POPUP (RIGHT SIDE - BOUNCE STYLE)
+       ========================================================================== */
+      .wa-widget {
+        position: fixed;
+        right: 24px;
+        left: auto;
+        bottom: 96px;
+        z-index: 99999;
+        font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+      }
+
+      /* Radar Pulse Ring */
+      .wa-radar-ring {
+        position: absolute;
+        inset: -6px;
+        border-radius: 50%;
+        border: 2px solid rgba(37, 211, 102, 0.7);
+        animation: waRadarPulse 2.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      @keyframes waRadarPulse {
+        0% {
+          transform: scale(0.9);
+          opacity: 0.85;
+        }
+
+        70% {
+          transform: scale(1.45);
+          opacity: 0;
+        }
+
+        100% {
+          transform: scale(1.45);
+          opacity: 0;
+        }
+      }
+
+      /* Bounce Keyframe Animation - Lively, energetic right-side bounce */
+      @keyframes waBounceAnimation {
+
+        0%,
+        20%,
+        53%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+
+        40%,
+        43% {
+          transform: translateY(-18px) scale(1.08, 0.94);
+        }
+
+        70% {
+          transform: translateY(-9px) scale(1.03, 0.98);
+        }
+
+        90% {
+          transform: translateY(-3px) scale(1.01);
+        }
+      }
+
+      /* Floating Action Button */
+      .wa-fab-btn {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow:
+          0 12px 28px -2px rgba(37, 211, 102, 0.6),
+          0 4px 14px rgba(0, 0, 0, 0.45),
+          inset 0 1px 1px rgba(255, 255, 255, 0.45);
+        animation: waBounceAnimation 2.2s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+        transition: box-shadow 0.26s ease, background 0.26s ease, transform 0.26s ease;
+        outline: none;
+        z-index: 2;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .wa-fab-btn:hover {
+        animation-play-state: paused;
+        transform: translateY(-4px) scale(1.1);
+        box-shadow:
+          0 16px 36px -2px rgba(37, 211, 102, 0.75),
+          0 6px 18px rgba(0, 0, 0, 0.5),
+          inset 0 1px 1px rgba(255, 255, 255, 0.5);
+      }
+
+      .wa-fab-btn:active {
+        animation-play-state: paused;
+        transform: translateY(-1px) scale(0.97);
+      }
+
+      .wa-widget.is-open .wa-fab-btn {
+        animation: none;
+        transform: scale(1);
+      }
+
+      .wa-fab-btn:active {
+        animation-play-state: paused;
+        transform: translateY(-1px) scale(0.97);
+      }
+
+      .wa-widget.is-open .wa-fab-btn {
+        animation: none;
+        transform: scale(1);
+      }
+
+      .wa-icon-chat,
+      .wa-icon-close {
+        position: absolute;
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+      }
+
+      .wa-icon-chat {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+      }
+
+      .wa-icon-close {
+        opacity: 0;
+        transform: rotate(-90deg) scale(0.6);
+        color: #fff;
+      }
+
+      .wa-widget.is-open .wa-icon-chat {
+        opacity: 0;
+        transform: rotate(90deg) scale(0.6);
+      }
+
+      .wa-widget.is-open .wa-icon-close {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+      }
+
+      .wa-widget.is-open .wa-radar-ring {
+        display: none;
+      }
+
+      /* Unread notification badge */
+      .wa-badge-notify {
+        position: absolute;
+        top: -3px;
+        right: -3px;
+        min-width: 19px;
+        height: 19px;
+        padding: 0 4px;
+        border-radius: 10px;
+        background: #EF4444;
+        border: 2px solid #000;
+        color: #ffffff;
+        font-size: 10px;
+        font-weight: 800;
+        line-height: 15px;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(239, 68, 68, 0.5);
+        z-index: 3;
+        animation: waBadgeBounce 2s infinite;
+      }
+
+      @keyframes waBadgeBounce {
+
+        0%,
+        100% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.15);
+        }
+      }
+
+      .wa-widget.has-interacted .wa-badge-notify {
+        display: none;
+      }
+
+      /* Tooltip */
+      .wa-tooltip {
+        position: absolute;
+        right: 70px;
+        left: auto;
+        top: 50%;
+        transform: translateY(-50%) translateX(6px);
+        background: rgba(15, 17, 23, 0.94);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+        padding: 6px 12px;
+        border-radius: 8px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .wa-fab-btn:hover .wa-tooltip {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+      }
+
+      .wa-widget.is-open .wa-tooltip {
+        display: none;
+      }
+
+      /* WhatsApp Chat Popup Window */
+      .wa-popup {
+        position: absolute;
+        bottom: 72px;
+        right: 0;
+        left: auto;
+        width: 326px;
+        max-width: calc(100vw - 32px);
+        background: rgba(14, 16, 23, 0.97);
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 20px;
+        box-shadow:
+          0 24px 60px -8px rgba(0, 0, 0, 0.92),
+          0 0 35px rgba(37, 211, 102, 0.15),
+          inset 0 1px 1px rgba(255, 255, 255, 0.12);
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px) scale(0.95);
+        transform-origin: bottom right;
+        transition: opacity 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+          visibility 0.26s;
+        z-index: 10;
+      }
+
+      .wa-popup.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+      }
+
+      /* Popup Header */
+      .wa-popup-header {
+        background: linear-gradient(135deg, rgba(37, 211, 102, 0.15) 0%, rgba(18, 140, 126, 0.25) 100%), rgba(18, 20, 29, 0.9);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .wa-avatar-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .wa-avatar {
+        position: relative;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 4px 10px rgba(37, 211, 102, 0.35);
+      }
+
+      .wa-status-dot {
+        position: absolute;
+        bottom: -1px;
+        right: -1px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #25D366;
+        border: 2px solid #0F1118;
+        box-shadow: 0 0 6px #25D366;
+      }
+
+      .wa-header-info {
+        line-height: 1.25;
+      }
+
+      .wa-title {
+        font-family: var(--font-display, sans-serif);
+        font-size: 13.5px;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: -0.01em;
+      }
+
+      .wa-subtitle {
+        font-size: 11px;
+        color: var(--text-dim, #94a3b8);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-top: 1px;
+      }
+
+      .wa-online-text {
+        color: #25D366;
+        font-weight: 600;
+      }
+
+      .wa-close-btn {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #94a3b8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+        outline: none;
+      }
+
+      .wa-close-btn:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+      }
+
+      /* Popup Body */
+      .wa-popup-body {
+        padding: 16px;
+        background: radial-gradient(circle at top right, rgba(37, 211, 102, 0.04) 0%, transparent 60%);
+      }
+
+      /* Chat message bubble */
+      .wa-chat-bubble {
+        background: rgba(26, 30, 42, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-left: 3px solid #25D366;
+        border-radius: 4px 14px 14px 14px;
+        padding: 10px 12px 8px;
+        margin-bottom: 14px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+      }
+
+      .wa-msg-author {
+        font-size: 10.5px;
+        font-weight: 700;
+        color: #25D366;
+        margin-bottom: 3px;
+        letter-spacing: 0.02em;
+      }
+
+      .wa-msg-text {
+        font-size: 12.5px;
+        color: #e2e8f0;
+        line-height: 1.45;
+      }
+
+      .wa-msg-time {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 4px;
+        font-size: 10px;
+        color: #64748b;
+        margin-top: 4px;
+      }
+
+      /* Quick Reply Chips */
+      .wa-quick-replies {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .wa-quick-label {
+        font-size: 10.5px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #64748b;
+        margin-bottom: 2px;
+      }
+
+      .wa-chip {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 12px;
+        background: rgba(255, 255, 255, 0.035);
+        border: 1px solid rgba(37, 211, 102, 0.22);
+        border-radius: 10px;
+        color: #cbd5e1;
+        font-size: 12px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .wa-chip::after {
+        content: "→";
+        font-size: 13px;
+        color: #25D366;
+        opacity: 0.7;
+        transition: transform 0.2s;
+      }
+
+      .wa-chip:hover {
+        background: rgba(37, 211, 102, 0.12);
+        border-color: rgba(37, 211, 102, 0.5);
+        color: #ffffff;
+        transform: translateX(3px);
+      }
+
+      .wa-chip:hover::after {
+        transform: translateX(2px);
+        opacity: 1;
+      }
+
+      /* Popup Footer CTA */
+      .wa-popup-footer {
+        padding: 12px 16px 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(10, 12, 18, 0.9);
+        text-align: center;
+      }
+
+      .wa-chat-cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        height: 42px;
+        border-radius: 11px;
+        background: linear-gradient(135deg, #25D366 0%, #1da851 100%);
+        color: #ffffff;
+        font-size: 13.5px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .wa-chat-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.55);
+      }
+
+      .wa-reply-meta {
+        font-size: 10.5px;
+        color: #64748b;
+        margin-top: 6px;
+      }
+
+      /* Mobile Adaptations */
+      @media (max-width: 600px) {
+        .wa-widget {
+          right: 16px;
+          left: auto;
+          bottom: 120px;
+        }
+
+        .wa-fab-btn {
+          width: 52px;
+          height: 52px;
+        }
+
+        .wa-tooltip {
+          display: none;
+        }
+
+        .wa-popup {
+          bottom: 66px;
+          right: 0;
+          left: auto;
+          width: 300px;
+        }
+      }
   </style>
 
   <!-- Meta Pixel Code -->
   <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '962133969749416');
     fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=962133969749416&ev=PageView&noscript=1"
-  /></noscript>
+      src="https://www.facebook.com/tr?id=962133969749416&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
 </head>
 
@@ -3005,7 +3601,7 @@
       <!-- Live Workshop Status Badge -->
       <div class="nav-badge">
         <span class="nav-badge-dot"></span>
-        <span>Vijayawada &bull; Oct 24â€“25, 2026</span>
+        <span>Vijayawada &bull; Oct 24 &amp; 25, 2026</span>
       </div>
 
       <div class="nav-actions">
@@ -3045,17 +3641,17 @@
       <h1>Cinematic Shoot &amp; <span class="gradient-text">AI Film-Making Workshop</span></h1>
       <p class="hero-desc">
         A hands-on, 2-day practical training experience in Vijayawada. Master cinematic shooting, pro-level editing,
-        AI filmmaking, and META Ads â€” skills you can apply from Day 1.
+        AI filmmaking, and META Ads &mdash; skills you can apply from Day 1.
       </p>
 
       <!-- 4 Stat Metric Badges from Brochure -->
       <div class="stat-grid">
         <div class="stat-card">
-          <div class="stat-val">24â€“25 OCT</div>
+          <div class="stat-val">24 &amp; 25 OCT</div>
           <div class="stat-lbl">Dates</div>
         </div>
         <div class="stat-card">
-          <div class="stat-val">9AMâ€“7PM</div>
+          <div class="stat-val">9AM &ndash; 7PM</div>
           <div class="stat-lbl">Daily Timing</div>
         </div>
         <div class="stat-card">
@@ -3091,21 +3687,26 @@
 
         <div class="testimonials-grid">
           <!-- Video Card 1 -->
-          <div class="testimonial-card" data-video="video 1.mp4">
+          <div class="testimonial-card"
+            data-video="https://res.cloudinary.com/dfufczvbh/video/upload/v1791901867/WhatsApp_Video_2026-10-13_at_7.14.32_PM_1_ftmnsr.mp4">
             <div class="t-video-wrap">
-              <video class="testimonial-video" src="video 1.mp4" playsinline preload="metadata"></video>
+              <video class="testimonial-video"
+                src="https://res.cloudinary.com/dfufczvbh/video/upload/v1791901867/WhatsApp_Video_2026-10-13_at_7.14.32_PM_1_ftmnsr.mp4"
+                poster="https://res.cloudinary.com/dfufczvbh/video/upload/so_1.5/v1791901867/WhatsApp_Video_2026-10-13_at_7.14.32_PM_1_ftmnsr.jpg"
+                playsinline preload="metadata"></video>
               <div class="t-top-bar">
                 <span class="t-pill-tag">&#9733; 5.0 Review</span>
-                <span class="t-pill-dur">1:02</span>
+                <span class="t-pill-dur">Watch</span>
               </div>
               <button class="t-play-btn" type="button" aria-label="Play video testimonial 1">
                 <span class="t-play-pulse"></span>
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8 5v14l11-7z"/>
+                  <path d="M8 5v14l11-7z" />
                 </svg>
               </button>
               <div class="t-card-info">
-                <div class="t-student-quote">&ldquo;Hands-on practical training that changed my shooting perspective.&rdquo;</div>
+                <div class="t-student-quote">&ldquo;Hands-on practical training that changed my shooting
+                  perspective.&rdquo;</div>
                 <div class="t-student-meta">
                   <span class="t-student-name">Workshop Attendee</span>
                   <span class="t-student-role">&bull; Practical Session</span>
@@ -3115,21 +3716,26 @@
           </div>
 
           <!-- Video Card 2 -->
-          <div class="testimonial-card" data-video="video 2.mp4">
+          <div class="testimonial-card"
+            data-video="https://res.cloudinary.com/dfufczvbh/video/upload/v1791913445/WhatsApp_Video_2026-10-13_at_7.11.08_PM_hrihaz.mp4">
             <div class="t-video-wrap">
-              <video class="testimonial-video" src="video 2.mp4" playsinline preload="metadata"></video>
+              <video class="testimonial-video"
+                src="https://res.cloudinary.com/dfufczvbh/video/upload/v1791913445/WhatsApp_Video_2026-10-13_at_7.11.08_PM_hrihaz.mp4"
+                poster="https://res.cloudinary.com/dfufczvbh/video/upload/so_1.5/v1791913445/WhatsApp_Video_2026-10-13_at_7.11.08_PM_hrihaz.jpg"
+                playsinline preload="metadata"></video>
               <div class="t-top-bar">
                 <span class="t-pill-tag">&#9733; 5.0 Review</span>
-                <span class="t-pill-dur">2:43</span>
+                <span class="t-pill-dur">Watch</span>
               </div>
               <button class="t-play-btn" type="button" aria-label="Play video testimonial 2">
                 <span class="t-play-pulse"></span>
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8 5v14l11-7z"/>
+                  <path d="M8 5v14l11-7z" />
                 </svg>
               </button>
               <div class="t-card-info">
-                <div class="t-student-quote">&ldquo;Editing speed, pacing &amp; color grading workflow improved 3x.&rdquo;</div>
+                <div class="t-student-quote">&ldquo;Editing speed, pacing &amp; color grading workflow improved
+                  3x.&rdquo;</div>
                 <div class="t-student-meta">
                   <span class="t-student-name">Content Creator</span>
                   <span class="t-student-role">&bull; Video Editor</span>
@@ -3139,21 +3745,26 @@
           </div>
 
           <!-- Video Card 3 -->
-          <div class="testimonial-card" data-video="video 3.mp4">
+          <div class="testimonial-card"
+            data-video="https://res.cloudinary.com/dfufczvbh/video/upload/v1791913675/WhatsApp_Video_2026-10-13_at_7.10.21_PM_1_mppvkd.mp4">
             <div class="t-video-wrap">
-              <video class="testimonial-video" src="video 3.mp4" playsinline preload="metadata"></video>
+              <video class="testimonial-video"
+                src="https://res.cloudinary.com/dfufczvbh/video/upload/v1791913675/WhatsApp_Video_2026-10-13_at_7.10.21_PM_1_mppvkd.mp4"
+                poster="https://res.cloudinary.com/dfufczvbh/video/upload/so_1.5/v1791913675/WhatsApp_Video_2026-10-13_at_7.10.21_PM_1_mppvkd.jpg"
+                playsinline preload="metadata"></video>
               <div class="t-top-bar">
                 <span class="t-pill-tag">&#9733; 5.0 Review</span>
-                <span class="t-pill-dur">0:56</span>
+                <span class="t-pill-dur">Watch</span>
               </div>
               <button class="t-play-btn" type="button" aria-label="Play video testimonial 3">
                 <span class="t-play-pulse"></span>
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8 5v14l11-7z"/>
+                  <path d="M8 5v14l11-7z" />
                 </svg>
               </button>
               <div class="t-card-info">
-                <div class="t-student-quote">&ldquo;AI filmmaking &amp; prompt craft session was completely mind-blowing!&rdquo;</div>
+                <div class="t-student-quote">&ldquo;AI filmmaking &amp; prompt craft session was completely
+                  mind-blowing!&rdquo;</div>
                 <div class="t-student-meta">
                   <span class="t-student-name">Indie Filmmaker</span>
                   <span class="t-student-role">&bull; Director</span>
@@ -3164,8 +3775,9 @@
         </div>
 
         <div class="testimonials-swipe-hint">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 5l7 7m0 0l-7 7m7-7H3" />
           </svg>
           <span>Swipe to explore student video stories</span>
         </div>
@@ -3188,7 +3800,7 @@
       <!-- Vijayawada Images Gallery -->
       <div class="city-gallery">
         <div class="city-img-card">
-          <img src="vijayawada-temple.jpg" alt="Kanaka Durga Temple, Vijayawada â€” Bejawada" loading="lazy">
+          <img src="vijayawada-temple.jpg" alt="Kanaka Durga Temple, Vijayawada &mdash; Bejawada" loading="lazy">
           <div class="city-img-overlay"></div>
           <div class="city-img-caption">&#128146; Kanaka Durga Temple, Vijayawada</div>
         </div>
@@ -3214,13 +3826,16 @@
   </header>
 
   <!-- ===== POPUP NOTIFICATION (CENTERED ON SCREEN) ===== -->
-  <div id="popupOverlay"></div>
+  <div id="popupOverlay"
+    onclick="if(window.dismissPopupNotif){window.dismissPopupNotif();}else{this.style.display='none';var p=document.getElementById('popupNotif');if(p)p.style.display='none';}">
+  </div>
   <div id="popupNotif" role="alert" aria-live="polite">
     <div class="popup-card">
       <div class="popup-head">
         <img src="logo.png" alt="Creator Craft Media" class="popup-logo">
         <span class="popup-time">now</span>
-        <button class="popup-close" id="popupClose" aria-label="Dismiss">&#x2715;</button>
+        <button class="popup-close" id="popupClose" aria-label="Dismiss"
+          onclick="if(window.dismissPopupNotif){window.dismissPopupNotif();}else{var p=document.getElementById('popupNotif'),o=document.getElementById('popupOverlay');if(p)p.style.display='none';if(o)o.style.display='none';}">&#x2715;</button>
       </div>
       <p class="popup-title">Hey, Vijayawada! &#x1F44B;</p>
       <p class="popup-body">
@@ -3233,9 +3848,9 @@
         <a href="#curriculum" class="popup-tag">Create</a>
         <a href="#curriculum" class="popup-tag">Shoot</a>
         <a href="#curriculum" class="popup-tag">Edit</a>
-        <a href="index.html" class="popup-tag">Register &#x1F680;</a>
+        <a href="register.html" class="popup-tag">Register &#x1F680;</a>
       </div>
-      <a href="index.html" class="popup-register-btn" id="popupRegisterBtn">Register Now &#x2192;</a>
+      <a href="register.html" class="popup-register-btn" id="popupRegisterBtn">Register Now &#x2192;</a>
       <div class="popup-progress">
         <div class="popup-progress-fill"></div>
       </div>
@@ -3594,7 +4209,7 @@
     <div class="wrap">
       <img src="logo.png" alt="Creator Craft Media" class="footer-logo">
       <p class="footer-title">Cinematic Shoot &amp; AI Film-Making Workshop</p>
-      <p class="footer-sub">October 24 &amp; 25, 2026 &bull; 9:00 AM â€“ 7:00 PM &bull; Vijayawada</p>
+      <p class="footer-sub">October 24 &amp; 25, 2026 &bull; 9:00 AM &ndash; 7:00 PM &bull; Vijayawada</p>
 
       <div class="footer-links">
         <a href="tel:9121796816" class="footer-link">&#128222; Call: 9121796816</a>
@@ -3607,14 +4222,6 @@
       <p style="font-size: 13px; color: var(--text-dim); margin-top: 8px;">
         Reach out to <strong>9121796816</strong> for any questions regarding your reservation.
       </p>
-
-      <!-- Discreet Admin Export Button for Spreadsheet CSV Download -->
-      <div>
-        <button type="button" class="admin-export-btn" id="exportCsvBtn"
-          title="Download all registered participants from this browser as CSV">
-          &#128229; Export Registrations to CSV
-        </button>
-      </div>
     </div>
   </footer>
 
@@ -3638,50 +4245,53 @@
       }, duration);
     }
 
-    // Admin: Export All Registrations to CSV
-    document.getElementById('exportCsvBtn').addEventListener('click', function () {
-      try {
-        var list = JSON.parse(localStorage.getItem('ccm_workshop_registrations') || '[]');
-        if (list.length === 0) {
-          showToast('No registrations stored in this browser yet.');
-          return;
+    // Admin: Export All Registrations to CSV (if button exists)
+    var exportCsvBtn = document.getElementById('exportCsvBtn');
+    if (exportCsvBtn) {
+      exportCsvBtn.addEventListener('click', function () {
+        try {
+          var list = JSON.parse(localStorage.getItem('ccm_workshop_registrations') || '[]');
+          if (list.length === 0) {
+            showToast('No registrations stored in this browser yet.');
+            return;
+          }
+
+          var headers = ["Timestamp", "Registration ID", "Full Name", "Mobile", "Email", "T-Shirt", "Category", "Knowledge Level", "Location", "Freelance Interest", "UTR ID", "Workshop Pass (PDF)", "Receipt Filename"];
+          var csvRows = [headers.join(",")];
+
+          list.forEach(function (item) {
+            var row = [
+              '"' + (item.timestamp || '') + '"',
+              '"' + (item.regId || '') + '"',
+              '"' + (item.fullName || '') + '"',
+              '"' + (item.mobile || '') + '"',
+              '"' + (item.email || '') + '"',
+              '"' + (item.tshirt || '') + '"',
+              '"' + (item.category || '') + '"',
+              '"' + (item.knowledge || '') + '"',
+              '"' + (item.location || '') + '"',
+              '"' + (item.freelance || '') + '"',
+              '"' + (item.utr || '') + '"',
+              '"' + (item.pdfFilename || (item.regId ? item.regId + '_Workshop_Pass.pdf' : 'Pass Available')) + '"',
+              '"' + (item.receiptFilename || '') + '"'
+            ];
+            csvRows.push(row.join(","));
+          });
+
+          var blob = new Blob([csvRows.join("\n")], { type: "text/csv;charset=utf-8;" });
+          var url = URL.createObjectURL(blob);
+          var link = document.createElement("a");
+          link.setAttribute("href", url);
+          link.setAttribute("download", "ccm_vijayawada_registrations_" + new Date().toISOString().slice(0, 10) + ".csv");
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          showToast('Exported ' + list.length + ' registration(s) to CSV!');
+        } catch (err) {
+          showToast('Failed to export CSV: ' + err.message);
         }
-
-        var headers = ["Timestamp", "Registration ID", "Full Name", "Mobile", "Email", "T-Shirt", "Category", "Knowledge Level", "Location", "Freelance Interest", "UTR ID", "Workshop Pass (PDF)", "Receipt Filename"];
-        var csvRows = [headers.join(",")];
-
-        list.forEach(function (item) {
-          var row = [
-            '"' + (item.timestamp || '') + '"',
-            '"' + (item.regId || '') + '"',
-            '"' + (item.fullName || '') + '"',
-            '"' + (item.mobile || '') + '"',
-            '"' + (item.email || '') + '"',
-            '"' + (item.tshirt || '') + '"',
-            '"' + (item.category || '') + '"',
-            '"' + (item.knowledge || '') + '"',
-            '"' + (item.location || '') + '"',
-            '"' + (item.freelance || '') + '"',
-            '"' + (item.utr || '') + '"',
-            '"' + (item.pdfFilename || (item.regId ? item.regId + '_Workshop_Pass.pdf' : 'Pass Available')) + '"',
-            '"' + (item.receiptFilename || '') + '"'
-          ];
-          csvRows.push(row.join(","));
-        });
-
-        var blob = new Blob([csvRows.join("\n")], { type: "text/csv;charset=utf-8;" });
-        var url = URL.createObjectURL(blob);
-        var link = document.createElement("a");
-        link.setAttribute("href", url);
-        link.setAttribute("download", "ccm_vijayawada_registrations_" + new Date().toISOString().slice(0, 10) + ".csv");
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        showToast('Exported ' + list.length + ' registration(s) to CSV!');
-      } catch (err) {
-        showToast('Failed to export CSV: ' + err.message);
-      }
-    });
+      });
+    }
 
     // Popup Notification Controller (Centered on Screen)
     (function () {
@@ -3689,6 +4299,7 @@
       var overlay = document.getElementById('popupOverlay');
       var closer = document.getElementById('popupClose');
       var autoTimer;
+      var isDismissed = false;
 
       if (!popup || !overlay) return;
 
@@ -3701,21 +4312,50 @@
       }
 
       function dismiss() {
+        if (isDismissed) return;
+        isDismissed = true;
         clearTimeout(autoTimer);
         popup.classList.add('hiding');
         overlay.classList.add('hiding');
-        popup.addEventListener('animationend', function () { popup.style.display = 'none'; }, { once: true });
-        overlay.addEventListener('animationend', function () { overlay.style.display = 'none'; }, { once: true });
+        popup.style.pointerEvents = 'none';
+        overlay.style.pointerEvents = 'none';
+
+        var finalizeHide = function () {
+          popup.style.display = 'none';
+          overlay.style.display = 'none';
+        };
+
+        // Fallback timer guarantees closure after animation completes (350ms)
+        setTimeout(finalizeHide, 350);
+        popup.addEventListener('animationend', finalizeHide, { once: true });
+        overlay.addEventListener('animationend', finalizeHide, { once: true });
+      }
+      window.dismissPopupNotif = dismiss;
+
+      if (closer) {
+        closer.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          dismiss();
+        });
       }
 
-      if (closer) closer.addEventListener('click', dismiss);
-      overlay.addEventListener('click', dismiss);
+      overlay.addEventListener('click', function (e) {
+        e.preventDefault();
+        dismiss();
+      });
+
+      // Escape key closes notification
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          dismiss();
+        }
+      });
 
       popup.querySelectorAll('.popup-tag, #popupRegisterBtn').forEach(function (tag) {
         tag.addEventListener('click', function () {
-          // Mark that popup was clicked so it won't reappear after redirect
           sessionStorage.setItem('ccm_popup_clicked', '1');
-          setTimeout(dismiss, 300);
+          setTimeout(dismiss, 200);
         });
       });
 
@@ -3751,7 +4391,7 @@
         </div>
         <div class="srb-price-sub">
           <span class="srb-live-dot" aria-hidden="true"></span>
-          <span>Only <span class="srb-seats-count" id="srbSeatsLeft">7</span> seats left &bull; Oct 24&ndash;25</span>
+          <span>Only <span class="srb-seats-count" id="srbSeatsLeft">7</span> seats left &bull; Oct 24 &amp; 25</span>
         </div>
       </div>
 
@@ -3774,7 +4414,8 @@
           <!-- Arrow badge -->
           <span class="srb-arrow-badge" aria-hidden="true">
             <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-              <path d="M2 7h10M8 3l4 4-4 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </span>
 
@@ -3792,8 +4433,8 @@
 
   <script>
     (function () {
-      var bar        = document.getElementById('stickyRegBar');
-      var btn        = document.getElementById('stickyRegBtn');
+      var bar = document.getElementById('stickyRegBar');
+      var btn = document.getElementById('stickyRegBtn');
       var regSection = document.querySelector('section[style*="padding: 60px 0 100px"]');
 
       /* Show / hide on scroll */
@@ -3808,13 +4449,13 @@
       /* Ripple on click */
       if (btn) {
         btn.addEventListener('click', function (e) {
-          var r    = document.createElement('span');
+          var r = document.createElement('span');
           var rect = btn.getBoundingClientRect();
-          var sz   = Math.max(rect.width, rect.height);
+          var sz = Math.max(rect.width, rect.height);
           r.className = 'srb-ripple';
-          r.style.cssText = 'width:'+sz+'px;height:'+sz+'px;left:'+(e.clientX-rect.left-sz/2)+'px;top:'+(e.clientY-rect.top-sz/2)+'px';
+          r.style.cssText = 'width:' + sz + 'px;height:' + sz + 'px;left:' + (e.clientX - rect.left - sz / 2) + 'px;top:' + (e.clientY - rect.top - sz / 2) + 'px';
           btn.appendChild(r);
-          r.addEventListener('animationend', function(){ r.remove(); });
+          r.addEventListener('animationend', function () { r.remove(); });
         });
       }
 
@@ -3854,6 +4495,17 @@
           }
         }
 
+        // Automatically populate duration pill when video metadata loads
+        video.addEventListener('loadedmetadata', function () {
+          var dur = Math.round(video.duration);
+          if (dur && !isNaN(dur) && isFinite(dur)) {
+            var m = Math.floor(dur / 60);
+            var s = dur % 60;
+            var durEl = card.querySelector('.t-pill-dur');
+            if (durEl) durEl.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+          }
+        });
+
         // Tap on card or play button toggles playback
         card.addEventListener('click', function (e) {
           // If clicking native video controls when already active, allow native behavior
@@ -3884,6 +4536,165 @@
           video.controls = false;
           video.currentTime = 0;
         });
+      });
+    })();
+  </script>
+
+  <!-- ==========================================================================
+       WHATSAPP FLOATING BUTTON & CHAT POPUP (BOTTOM LEFT)
+       ========================================================================== -->
+  <div class="wa-widget" id="waWidget">
+    <!-- WhatsApp Chat Popup -->
+    <div class="wa-popup" id="waPopup" role="dialog" aria-modal="false" aria-label="WhatsApp Support Chat"
+      aria-hidden="true">
+      <!-- Popup Header -->
+      <div class="wa-popup-header">
+        <div class="wa-avatar-wrap">
+          <div class="wa-avatar">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+            </svg>
+            <span class="wa-status-dot"></span>
+          </div>
+          <div class="wa-header-info">
+            <div class="wa-title">Creator Craft Media</div>
+            <div class="wa-subtitle">Workshop Support &bull; <span class="wa-online-text">Online</span></div>
+          </div>
+        </div>
+        <button class="wa-close-btn" id="waCloseBtn" type="button" aria-label="Close WhatsApp chat popup">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Popup Body -->
+      <div class="wa-popup-body">
+        <div class="wa-chat-bubble">
+          <div class="wa-msg-author">CCM Workshop Team</div>
+          <div class="wa-msg-text">
+            Hi there! &#128075; Have questions about the <strong>Vijayawada Workshop (Oct 24 &amp; 25)</strong>?
+            We're here to help with seats, schedules &amp; payment!
+          </div>
+          <div class="wa-msg-time">
+            <span>Just now</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.4"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+              <polyline points="20 11 13 18 10 15"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Quick Query Chips -->
+        <div class="wa-quick-replies">
+          <span class="wa-quick-label">Quick Queries:</span>
+          <a href="https://wa.me/919121796816?text=Hi!%20Can%20you%20share%20the%20complete%20schedule%20for%20the%20Vijayawada%20Workshop%20(Oct%2024%20%26%2025)%3F"
+            target="_blank" rel="noopener" class="wa-chip">
+            &#128197; Workshop Schedule
+          </a>
+          <a href="https://wa.me/919121796816?text=Hi!%20Are%20seats%20still%20available%20for%20the%20Vijayawada%20Workshop%3F"
+            target="_blank" rel="noopener" class="wa-chip">
+            &#127919; Check Seats Left
+          </a>
+          <a href="https://wa.me/919121796816?text=Hi!%20I%20need%20help%20with%20registration%20and%20payment%20for%20the%20Vijayawada%20workshop."
+            target="_blank" rel="noopener" class="wa-chip">
+            &#128179; Fee &amp; Registration Help
+          </a>
+        </div>
+      </div>
+
+      <!-- Popup Footer CTA -->
+      <div class="wa-popup-footer">
+        <a href="https://wa.me/919121796816?text=Hi%20Creator%20Craft%20Media!%20I%20have%20queries%20about%20the%20Vijayawada%20Workshop."
+          target="_blank" rel="noopener" class="wa-chat-cta" id="waCtaBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+          </svg>
+          <span>Chat on WhatsApp</span>
+        </a>
+        <div class="wa-reply-meta">&#9889; Typically replies instantly</div>
+      </div>
+    </div>
+
+    <!-- Floating Action Button (FAB) -->
+    <button class="wa-fab-btn" id="waFabBtn" type="button" aria-label="Open WhatsApp support chat"
+      aria-expanded="false">
+      <span class="wa-radar-ring"></span>
+      <span class="wa-badge-notify" aria-hidden="true">1</span>
+      <svg class="wa-fab-icon wa-icon-chat" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+      </svg>
+      <svg class="wa-fab-icon wa-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+      <span class="wa-tooltip">Chat with us on WhatsApp</span>
+    </button>
+  </div>
+
+  <!-- WhatsApp Widget Interactive Script -->
+  <script>
+    (function () {
+      var widget = document.getElementById('waWidget');
+      var fab = document.getElementById('waFabBtn');
+      var popup = document.getElementById('waPopup');
+      var closeBtn = document.getElementById('waCloseBtn');
+      if (!widget || !fab || !popup) return;
+
+      function openPopup() {
+        widget.classList.add('is-open');
+        widget.classList.add('has-interacted');
+        popup.classList.add('is-open');
+        popup.setAttribute('aria-hidden', 'false');
+        fab.setAttribute('aria-expanded', 'true');
+      }
+
+      function closePopup() {
+        widget.classList.remove('is-open');
+        popup.classList.remove('is-open');
+        popup.setAttribute('aria-hidden', 'true');
+        fab.setAttribute('aria-expanded', 'false');
+      }
+
+      function togglePopup() {
+        if (popup.classList.contains('is-open')) {
+          closePopup();
+        } else {
+          openPopup();
+        }
+      }
+
+      fab.addEventListener('click', function (e) {
+        e.stopPropagation();
+        togglePopup();
+      });
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          closePopup();
+        });
+      }
+
+      // Close on outside click
+      document.addEventListener('click', function (e) {
+        if (!widget.contains(e.target) && popup.classList.contains('is-open')) {
+          closePopup();
+        }
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && popup.classList.contains('is-open')) {
+          closePopup();
+        }
       });
     })();
   </script>
