@@ -1684,10 +1684,12 @@
         transform: scale(0.9);
         opacity: 0.85;
       }
+
       70% {
         transform: scale(1.45);
         opacity: 0;
       }
+
       100% {
         transform: scale(1.45);
         opacity: 0;
@@ -1696,15 +1698,24 @@
 
     /* Bounce Keyframe Animation - Lively right-side bounce */
     @keyframes waBounceAnimation {
-      0%, 20%, 53%, 80%, 100% {
+
+      0%,
+      20%,
+      53%,
+      80%,
+      100% {
         transform: translateY(0);
       }
-      40%, 43% {
+
+      40%,
+      43% {
         transform: translateY(-18px) scale(1.08, 0.94);
       }
+
       70% {
         transform: translateY(-9px) scale(1.03, 0.98);
       }
+
       90% {
         transform: translateY(-3px) scale(1.01);
       }
@@ -1806,9 +1817,12 @@
     }
 
     @keyframes waBadgeBounce {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: scale(1);
       }
+
       50% {
         transform: scale(1.15);
       }
@@ -2130,7 +2144,7 @@
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
       if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
       n.queue = []; t = b.createElement(e); t.async = !0;
@@ -2353,8 +2367,8 @@
           </div>
 
           <div style="margin-top: 8px;">
-            <button type="submit" class="btn-submit">
-              <span>Proceed to Payment (&#8377;3,999)</span>
+            <button type="submit" class="btn-submit" id="step1SubmitBtn">
+              <span>Next Step (Register Now)</span>
               <span style="font-size: 18px; line-height: 1;">&rarr;</span>
             </button>
           </div>
@@ -2608,10 +2622,7 @@
       </p>
 
       <!-- Discreet Admin Export Buttons for Spreadsheet CSV & PDF Download -->
-      <div style="margin-top: 10px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-        <button type="button" class="admin-export-btn" id="exportCsvBtn">&#128196; Export CSV (Admin)</button>
-        <button type="button" class="admin-export-btn" id="adminDownloadPassBtn">&#128196; Download Pass (Admin)</button>
-      </div>
+
     </div>
   </footer>
 
@@ -2674,10 +2685,63 @@
       }, duration);
     }
 
-    // Step 1: Proceed to Step 2
+    // Step 1: Proceed to Step 2 & Store Step 1 Details in Excel / Google Sheets
     regForm.addEventListener('submit', function (e) {
       e.preventDefault();
+      var prevRegId = (registration && registration.regId) ? registration.regId : null;
       registration = Object.fromEntries(new FormData(regForm).entries());
+      registration.regId = prevRegId || ('CCM-VJA-' + Math.floor(10000 + Math.random() * 90000));
+
+      // Construct Step 1 Lead Payload
+      var step1Payload = {
+        timestamp: new Date().toISOString(),
+        regId: registration.regId,
+        step: 'Step 1 - Lead Captured',
+        fullName: registration.fullName || '',
+        mobile: registration.mobile || '',
+        email: registration.email || 'Not provided',
+        tshirt: registration.tshirt || '',
+        category: registration.category || '',
+        knowledge: registration.knowledge || '',
+        location: registration.location || 'Vijayawada',
+        freelance: registration.freelance || '',
+        utr: 'Step 1 Complete (Payment Pending)',
+        paymentStatus: 'Payment Pending',
+        pdfFilename: 'None',
+        pdfBase64: '',
+        receiptFilename: 'Pending (Step 2 in progress)',
+        receiptBase64: '',
+        receipt2Filename: 'None',
+        receipt2Base64: ''
+      };
+
+      // 1. Immediately store Step 1 data in localStorage
+      try {
+        var existing = JSON.parse(localStorage.getItem('ccm_workshop_registrations') || '[]');
+        var foundIdx = existing.findIndex(function (item) { return item.regId === registration.regId; });
+        if (foundIdx >= 0) {
+          existing[foundIdx] = Object.assign({}, existing[foundIdx], step1Payload);
+        } else {
+          existing.push(step1Payload);
+        }
+        localStorage.setItem('ccm_workshop_registrations', JSON.stringify(existing));
+      } catch (storageErr) {
+        console.warn('LocalStorage Step 1 error:', storageErr);
+      }
+
+      // 2. Background sync Step 1 data to Google Sheets (Excel)
+      if (GOOGLE_SHEET_WEBAPP_URL && GOOGLE_SHEET_WEBAPP_URL.startsWith('http')) {
+        fetch(GOOGLE_SHEET_WEBAPP_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(step1Payload)
+        }).then(function () {
+          console.log('Step 1 data synced to Google Sheets / Excel successfully:', registration.regId);
+        }).catch(function (fetchErr) {
+          console.warn('Google Sheets Step 1 sync error:', fetchErr);
+        });
+      }
 
       // Update Step 2 Participant Summary Bar
       const summaryNameEl = document.getElementById('summaryName');
@@ -2693,7 +2757,7 @@
       stepPill2.classList.add('active');
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      showToast('Step 1 complete! Please scan QR and submit your UTR number.');
+      showToast('Step 1 details saved! Please scan QR and submit payment screenshot.');
 
       // Meta Pixel: Track Lead & InitiateCheckout
       if (typeof fbq === 'function') {
@@ -2902,7 +2966,7 @@
       }
 
       var utr = '';
-      var regId = 'CCM-VJA-' + Math.floor(10000 + Math.random() * 90000);
+      var regId = (registration && registration.regId) ? registration.regId : ('CCM-VJA-' + Math.floor(10000 + Math.random() * 90000));
       var hadScreenshot = !!(receiptFileData1 || receiptFileData2);
 
       // Set Receipt Data for PDF
@@ -2915,7 +2979,7 @@
         knowledge: registration.knowledge || 'Intermediate',
         location: registration.location || 'Vijayawada',
         freelance: registration.freelance || 'Yes, interested',
-        utr: utr || (hadScreenshot ? 'Submitted via screenshot' : 'Not provided'),
+        utr: utr || (hadScreenshot ? 'Submitted via screenshot' : 'Payment Completed (Screenshot Attached)'),
         paymentStatus: hadScreenshot ? 'Payment Successful' : 'Payment Pending',
         timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
       };
@@ -2933,14 +2997,17 @@
       var payload = {
         timestamp: new Date().toISOString(),
         regId: regId,
+        step: 'Step 2 - Completed & Confirmed',
         fullName: registration.fullName,
         mobile: registration.mobile,
         email: registration.email,
+        tshirt: registration.tshirt || '',
         category: registration.category,
         knowledge: registration.knowledge,
         location: registration.location,
         freelance: registration.freelance,
-        utr: utr,
+        utr: utr || (hadScreenshot ? 'Submitted via screenshot' : 'Payment Completed (Screenshot Attached)'),
+        paymentStatus: hadScreenshot ? 'Payment Successful' : 'Payment Pending',
         pdfFilename: 'CCM_Vijayawada_Pass_' + regId + '.pdf',
         pdfBase64: pdfBase64,
         receiptFilename: receiptFileData1 ? receiptFileData1.name : 'None',
@@ -2949,10 +3016,15 @@
         receipt2Base64: receiptFileData2 ? receiptFileData2.base64 : ''
       };
 
-      // 2. Immediately backup to localStorage
+      // 2. Immediately backup to localStorage (update existing Step 1 record)
       try {
         var existing = JSON.parse(localStorage.getItem('ccm_workshop_registrations') || '[]');
-        existing.push(payload);
+        var foundIdx = existing.findIndex(function (item) { return item.regId === regId; });
+        if (foundIdx >= 0) {
+          existing[foundIdx] = Object.assign({}, existing[foundIdx], payload);
+        } else {
+          existing.push(payload);
+        }
         localStorage.setItem('ccm_workshop_registrations', JSON.stringify(existing));
       } catch (storageErr) {
         console.warn('LocalStorage error:', storageErr);
@@ -3521,7 +3593,8 @@
         <div class="wa-avatar-wrap">
           <div class="wa-avatar">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+              <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
             </svg>
             <span class="wa-status-dot"></span>
           </div>
@@ -3580,7 +3653,8 @@
         <a href="https://wa.me/919121796816?text=Hi%20Creator%20Craft%20Media!%20I%20need%20help%20with%20registration%20for%20the%20Vijayawada%20Workshop."
           target="_blank" rel="noopener" class="wa-chat-cta" id="waCtaBtn">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            <path
+              d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
           </svg>
           <span>Chat on WhatsApp</span>
         </a>
@@ -3594,7 +3668,8 @@
       <span class="wa-radar-ring"></span>
       <span class="wa-badge-notify" aria-hidden="true">1</span>
       <svg class="wa-fab-icon wa-icon-chat" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        <path
+          d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
       </svg>
       <svg class="wa-fab-icon wa-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">

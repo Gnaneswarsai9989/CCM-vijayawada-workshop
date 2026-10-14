@@ -149,6 +149,8 @@ function doPost(e) {
       } catch (pdfErr) {
         pdfDriveUrl = "Error saving PDF: " + pdfErr.toString();
       }
+    } else if (data.step === "Step 1 - Lead Captured" || data.paymentStatus === "Payment Pending") {
+      pdfDriveUrl = "Pending (Step 2 Payment)";
     } else {
       // Fallback: Generate the pass PDF directly inside Google Apps Script!
       try {
@@ -202,7 +204,7 @@ function doPost(e) {
       ? '=HYPERLINK("' + pdfDriveUrl + '", "📄 Download PDF Pass")'
       : pdfDriveUrl;
 
-    // ── 5. Append row to sheet ────────────────────────────────────────────
+    // ── 5. Append or Update row in sheet ──────────────────────────────────
     var row = [
       new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
       regId,
@@ -222,16 +224,34 @@ function doPost(e) {
       fileUrl2,
     ];
 
-    sheet.appendRow(row);
+    // Check if registration ID already exists (e.g. from Step 1)
+    var totalRows = sheet.getLastRow();
+    var existingRowIndex = -1;
+    if (totalRows > 1) {
+      var regIds = sheet.getRange(2, 2, totalRows - 1, 1).getValues();
+      for (var r = 0; r < regIds.length; r++) {
+        if (regIds[r][0] && String(regIds[r][0]).trim() === String(regId).trim()) {
+          existingRowIndex = r + 2;
+          break;
+        }
+      }
+    }
+
+    var targetRow = existingRowIndex > 0 ? existingRowIndex : (totalRows + 1);
+    if (existingRowIndex > 0) {
+      sheet.getRange(targetRow, 1, 1, row.length).setValues([row]);
+    } else {
+      sheet.appendRow(row);
+      targetRow = sheet.getLastRow();
+    }
 
     // Alternating luxury row styling for easy scanning
-    var lastRow  = sheet.getLastRow();
-    var rowRange = sheet.getRange(lastRow, 1, 1, row.length);
-    rowRange.setBackground(lastRow % 2 === 0 ? "#0B0F1A" : "#111827");
+    var rowRange = sheet.getRange(targetRow, 1, 1, row.length);
+    rowRange.setBackground(targetRow % 2 === 0 ? "#0B0F1A" : "#111827");
     rowRange.setFontColor("#E2E8F0");
 
     // Make the PDF pass cell highlighted for quick access
-    var pdfCellRange = sheet.getRange(lastRow, 12);
+    var pdfCellRange = sheet.getRange(targetRow, 12);
     pdfCellRange.setFontWeight("bold");
     pdfCellRange.setFontColor("#38BDF8");
 
